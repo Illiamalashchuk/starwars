@@ -10,14 +10,12 @@ function Home(props) {
 
   useEffect(() => {
     getFilms();
-    // setFilms(films);
-    // console.log(films)
   }, []);
 
   return (
-    <div>
+    <div className="screen-container">
       <Header />
-      Films: {state.length}
+      <div style={{ color: "#fff" }}>Films: {state.length}</div>
     </div>
   );
 }

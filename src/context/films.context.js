@@ -1,26 +1,31 @@
-import createDataContext from './createDataContext'
-import server from '../api/server';
+import createDataContext from "./createDataContext";
+import server from "../api/server";
 
 const filmsReducer = (state, action) => {
   switch (action.type) {
-    case 'get_films':
+    case "get_films":
       return action.payload;
     default:
-     return state;
+      return state;
   }
-}
+};
 
 const getFilms = (dispatch) => {
-  return async () => {
-    const results = await server.get('/films');
+  return async (value) => {
+    const results = await server.get("/films");
     const { data } = results;
 
-    dispatch({ type: 'get_films', payload: data.results  });
-  }
-}
+    dispatch({
+      type: "get_films",
+      payload: data.results.filter((el) =>
+        value ? el.title.toLowerCase().includes(value) : true
+      ),
+    });
+  };
+};
 
 export const { Context, Provider } = createDataContext(
-  filmsReducer, 
+  filmsReducer,
   { getFilms },
   []
 );

@@ -1,0 +1,28 @@
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input {
+  font-size: 18px;
+  padding: 5px;
+  border: none;
+  background: #5c5c5c;
+  color: rgb(230, 230, 230);
+  border-radius: 5px;
+  transition: background-color 0.2s linear;
+}
+
+.input:focus {
+  outline: none;
+  background: #4e4e4e;
+  transition: background-color 0.2s linear;
+}
+
+.input-icon {
+  margin-left: 8px;
+  /* position: absolute;
+  top: 0;
+  right: 0; */
+}
