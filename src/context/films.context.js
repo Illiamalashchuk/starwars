@@ -12,17 +12,25 @@ const filmsReducer = (state, action) => {
         films: action.payload,
         currentFilm: null,
         errorMessage: "",
+        filterValue: "",
       };
+
     case "get_film":
-      return { ...state, ...action.payload, errorMessage: "" };
+      return { ...state, ...action.payload, errorMessage: "", filterValue: "" };
+
+    case "set_filter_value":
+      return { ...state, filterValue: action.payload, errorMessage: "" };
+
     case "set_loading":
       return {
         ...state,
         isLoading: action.payload,
         errorMessage: "",
       };
+
     case "set_error":
       return { ...state, errorMessage: action.payload };
+
     default:
       return state;
   }
@@ -37,9 +45,7 @@ const getFilms = (dispatch) => {
 
       dispatch({
         type: "get_films",
-        payload: data.results.filter((el) =>
-          value ? el.title.toLowerCase().includes(value) : true
-        ),
+        payload: data.results,
       });
       dispatch({ type: "set_loading", payload: false });
     } catch (err) {
@@ -47,6 +53,12 @@ const getFilms = (dispatch) => {
       dispatch({ type: "set_loading", payload: false });
       dispatch({ type: "set_error", payload: err.message });
     }
+  };
+};
+
+const setFilterValue = (dispatch) => {
+  return (value) => {
+    dispatch({ type: "set_filter_value", payload: value });
   };
 };
 
@@ -85,10 +97,11 @@ const getFilm = (dispatch) => {
 
 export const { Context, Provider } = createDataContext(
   filmsReducer,
-  { getFilms, getFilm },
+  { getFilms, getFilm, setFilterValue },
   {
     films: [],
     currentFilm: null,
+    filterValue: "",
     isLoading: false,
     errorMessage: "",
   }

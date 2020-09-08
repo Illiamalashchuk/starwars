@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 
 import { Context as FilmsContext } from "../../context/films.context";
 
@@ -12,9 +12,10 @@ import Logo from "../../assets/logo.png";
 import "./header.css";
 
 export default function Header({ detailsView, title, backLink }) {
-  const [value, setValue] = useState("");
-
-  const { state, getFilms } = useContext(FilmsContext);
+  const {
+    state: { filterValue },
+    setFilterValue,
+  } = useContext(FilmsContext);
 
   return (
     <div className="header-container">
@@ -33,11 +34,8 @@ export default function Header({ detailsView, title, backLink }) {
         <Search
           className="header-search"
           placeholder="Enter film title"
-          value={value}
-          setValue={(text) => {
-            setValue(text);
-            getFilms(text);
-          }}
+          value={filterValue}
+          setValue={setFilterValue}
         />
       )}
     </div>

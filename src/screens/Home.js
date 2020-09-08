@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useContext } from "react";
+import React, { useLayoutEffect, useState, useContext, useMemo } from "react";
 
 import { Context as FilmsContext } from "../context/films.context";
 
@@ -10,9 +10,15 @@ import "./screens.css";
 
 export default function Home({ match }) {
   const {
-    state: { films, isLoading, errorMessage },
+    state: { films, isLoading, errorMessage, filterValue },
     getFilms,
   } = useContext(FilmsContext);
+
+  const _films = useMemo(() => {
+    return films.filter((el) =>
+      filterValue ? el.title.toLowerCase().includes(filterValue.trim()) : true
+    );
+  }, [films, filterValue]);
 
   useLayoutEffect(() => {
     getFilms();
@@ -27,8 +33,8 @@ export default function Home({ match }) {
         </div>
       ) : (
         <div className="films-container">
-          {films?.length > 0 ? (
-            films.map((film, index) => (
+          {_films?.length > 0 ? (
+            _films.map((film, index) => (
               <React.Fragment key={film.episode_id}>
                 <Film film={film} index={index} />
               </React.Fragment>
