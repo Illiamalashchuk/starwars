@@ -1,13 +1,19 @@
 .header-container {
+  position: sticky;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
   box-shadow: 0 0.5px 0 0 #fff;
+  background-color: #000;
 }
 
-.header-logo {
-  height: 160px;
+.header-logo:hover {
+  text-decoration: none;
+}
+
+.header-logo__img {
+  height: 260px;
   width: 300px;
   object-fit: cover;
 }
@@ -22,4 +28,14 @@
   position: absolute;
   bottom: 20px;
   right: 0;
+}
+
+.header-title {
+  color: #fff;
+}
+
+.header-back-link {
+  position: absolute;
+  top: 70px;
+  left: 0;
 }

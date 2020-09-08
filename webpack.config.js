@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index_bundle.js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -22,6 +23,10 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
+            options: {
+              name: "[path][name].[ext]",
+              // outputPath: "/",
+            },
           },
         ],
       },
@@ -42,6 +47,9 @@ module.exports = {
     ],
   },
   mode: "development",
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "index.html",

@@ -4,16 +4,17 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .root {
   background-color: #000;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .screen-container {
   max-width: 1024px;
+  min-height: 100vh;
   height: 100%;
   margin: 0 auto;
   background-image: url(./assets/background.jpg);

@@ -1,0 +1,16 @@
+.film-container {
+  color: #fff;
+  margin: 15px 0;
+  background-color: #5c5c5c;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.film-reg-text {
+  margin: 5px 0;
+}
+
+.film-more-info {
+  display: block;
+  margin: 5px 0;
+}

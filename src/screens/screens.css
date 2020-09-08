@@ -1,0 +1,22 @@
+.films-container {
+  color: #fff;
+  padding-bottom: 15px;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-block {
+  height: 200px;
+}
+
+.no-message {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}

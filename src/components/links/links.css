@@ -1,3 +1,17 @@
 .links-container {
   display: flex;
 }
+
+.links-container .social-link:not(:first-child) {
+  margin-left: 10px;
+}
+
+.social-link:hover {
+  text-decoration: none;
+  transition: background-color 0.2s linear;
+}
+
+.social-link:hover svg path {
+  fill: rgb(165, 161, 161);
+  transition: fill 0.2s linear;
+}
