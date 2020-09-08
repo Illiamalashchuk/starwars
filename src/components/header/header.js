@@ -11,7 +11,7 @@ import Logo from "../../assets/logo.png";
 
 import "./header.css";
 
-export default function Header({ title, backLink }) {
+export default function Header({ detailsView, title, backLink }) {
   const [value, setValue] = useState("");
 
   const { state, getFilms } = useContext(FilmsContext);
@@ -27,7 +27,7 @@ export default function Header({ title, backLink }) {
       <Link className="header-logo" to="/">
         <img className="header-logo__img" src={Logo} alt="logo" />
       </Link>
-      {title ? (
+      {title || detailsView ? (
         <h1 className="header-search header-title">{title}</h1>
       ) : (
         <Search

@@ -10,7 +10,7 @@ import "./screens.css";
 
 export default function Home({ match }) {
   const {
-    state: { films, isLoading },
+    state: { films, isLoading, errorMessage },
     getFilms,
   } = useContext(FilmsContext);
 
@@ -36,6 +36,9 @@ export default function Home({ match }) {
           ) : (
             <p className="no-message">No films found</p>
           )}
+          {errorMessage ? (
+            <p className="no-message error-message">{errorMessage}</p>
+          ) : null}
         </div>
       )}
     </div>

@@ -8,10 +8,9 @@ import Loader from "../components/loader";
 
 import "./screens.css";
 
-function Details(props) {
-  const { match } = props;
+function Details({ match }) {
   const {
-    state: { currentFilm, isLoading },
+    state: { currentFilm, isLoading, errorMessage },
     getFilm,
   } = useContext(FilmsContext);
 
@@ -29,9 +28,13 @@ function Details(props) {
 
   return (
     <div className="screen-container">
-      <Header title={currentFilm?.title} backLink="/" />
+      <Header title={currentFilm?.title} backLink="/" detailsView />
       <div className="films-container">
-        {currentFilm && <Film film={currentFilm} detailsView />}
+        {errorMessage ? (
+          <p className="no-message error-message">{errorMessage}</p>
+        ) : (
+          currentFilm && <Film film={currentFilm} detailsView />
+        )}
       </div>
     </div>
   );

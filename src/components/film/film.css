@@ -13,4 +13,5 @@
 .film-more-info {
   display: block;
   margin: 5px 0;
+  width: fit-content;
 }
