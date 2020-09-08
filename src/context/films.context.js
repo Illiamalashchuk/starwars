@@ -86,12 +86,10 @@ const getFilm = (dispatch) => {
 export const { Context, Provider } = createDataContext(
   filmsReducer,
   { getFilms, getFilm },
-  [
-    {
-      films: [],
-      currentFilm: null,
-      isLoading: false,
-      errorMessage: "",
-    },
-  ]
+  {
+    films: [],
+    currentFilm: null,
+    isLoading: false,
+    errorMessage: "",
+  }
 );
